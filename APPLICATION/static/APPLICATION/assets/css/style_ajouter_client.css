@@ -1,0 +1,89 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f5f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(1, 41, 112, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #012970;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style des groupes de formulaire */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #012970;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ebeef4;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #444444;
+}
+
+.form-control:focus {
+    border-color: #4154f1;
+    outline: none;
+    box-shadow: 0 0 5px rgba(65, 84, 241, 0.5);
+}
+
+/* Bouton principal */
+.btn-primary {
+    display: block;
+    width: 100%;
+    background-color: #4154f1;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: #5969f3;
+}
+
+/* Messages d'alerte */
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #842029;
+}

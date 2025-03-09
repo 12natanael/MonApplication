@@ -1,0 +1,71 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Écritures</title>
+    <link rel="stylesheet" href="{% static 'APPLICATION/assets/css/style_liste_ecritures.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Mes Écritures</h1>
+
+        <!-- Barre de recherche -->
+        <form method="get" action="{% url 'liste_ecritures' %}">
+            <div class="form-group">
+                <input type="text" name="q" class="form-control" placeholder="Rechercher par date, montant, commentaire...">
+                <button type="submit" class="btn-primary">Rechercher</button>
+            </div>
+        </form>
+
+        <!-- Affichage des messages -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Tableau des écritures -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Montant</th>
+                    <th>Débit</th>
+                    <th>Crédit</th>
+                    <th>Commentaire</th>
+                    <th>Justificatif</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ecriture in ecritures %}
+                    <tr>
+                        <td>{{ ecriture.id }}</td>
+                        <td>{{ ecriture.date }}</td>
+                        <td>{{ ecriture.montant }} €</td>
+                        <td>{{ ecriture.debit.nom }} ({{ ecriture.debit.numero }})</td>
+                        <td>{{ ecriture.credit.nom }} ({{ ecriture.credit.numero }})</td>
+                        <td>{{ ecriture.commentaire|default:"-" }}</td>
+                        <td>{{ ecriture.justificatif|default:"-" }}</td>
+                        <td class="actions">
+                            <a href="{% url 'modifier_ecriture' ecriture.id %}" class="btn-primary">Modifier</a>
+                            <a href="{% url 'supprimer_ecriture' ecriture.id %}" class="btn-primary">Supprimer</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="8">Aucune écriture trouvée.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

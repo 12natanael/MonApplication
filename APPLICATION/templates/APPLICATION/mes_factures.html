@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes Factures</title>
+    <link rel="stylesheet" href="{% static 'APPLICATION/assets/css/style_mes_factures.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Mes Factures</h1>
+        <a href="{% url 'creer_facture' %}" class="btn-primary">Créer une nouvelle facture</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Numéro</th>
+                    <th>Client</th>
+                    <th>Date</th>
+                    <th>Montant</th>
+                    <th>État</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for facture in factures %}
+                <tr>
+                    <td>{{ facture.numero }}</td>
+                    <td>{{ facture.client.nom }}</td>
+                    <td>{{ facture.date_emission }}</td>
+                    <td>{{ facture.montant_total }} €</td>
+                    <td>{{ facture.etat }}</td>
+                    <td>
+                        <a href="{% url 'enregistrer_paiement' facture.id %}" class="btn-primary">Enregistrer un paiement</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

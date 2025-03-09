@@ -1,0 +1,86 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(1, 41, 112, 0.1);
+}
+
+/* Titre principal */
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #012970;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Boutons */
+.btn-primary {
+    background-color: #4154f1;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: #5969f3;
+}
+
+/* Tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(1, 41, 112, 0.1);
+    overflow: hidden;
+}
+
+/* En-tête du tableau */
+thead {
+    background-color: #012970;
+    color: white;
+    font-weight: 600;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternance des lignes */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Effet au survol */
+tbody tr:hover {
+    background-color: #f1f3f9;
+}
+
+/* Centrage du bouton dans la cellule */
+td .btn-primary {
+    display: block;
+    width: fit-content;
+    margin: auto;
+}

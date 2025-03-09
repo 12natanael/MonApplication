@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Clients</title>
+    <link rel="stylesheet" href="{% static 'APPLICATION/assets/css/style_liste_clients.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des Clients</h1>
+
+        <!-- Barre de recherche -->
+        <form method="get" action="{% url 'liste_clients' %}">
+            <div class="form-group">
+                <input type="text" name="q" class="form-control" placeholder="Rechercher par nom, email ou téléphone...">
+                <button type="submit" class="btn-primary">Rechercher</button>
+            </div>
+        </form>
+
+        <!-- Affichage des messages -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Tableau des clients -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                    <tr>
+                        <td>{{ client.id }}</td>
+                        <td>{{ client.nom }}</td>
+                        <td>{{ client.email|default:"-" }}</td>
+                        <td>{{ client.telephone|default:"-" }}</td>
+                        <td class="actions">
+                            <a href="{% url 'modifier_client' client.id %}" class="btn-primary">Modifier</a>
+                            <a href="{% url 'supprimer_client' client.id %}" class="btn-primary">Supprimer</a>
+                            <a href="{% url 'detail_client' client.id %}" class="btn-primary">Détails</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">Aucun client trouvé.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications des Relances</title>
+    <link rel="stylesheet" href="{% static 'APPLICATION/assets/css/style_notification.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Relances des Factures Impayées</h1>
+        
+        {% if factures_en_retard %}
+            <div class="alert alert-warning">
+                <p>Vous avez {{ factures_en_retard|length }} facture(s) en retard !</p>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Numéro</th>
+                        <th>Date d'Émission</th>
+                        <th>Date d'Échéance</th>
+                        <th>Montant</th>
+                        <th>Client/Fournisseur</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for facture in factures_en_retard %}
+                        <tr>
+                            <td>{{ facture.numero }}</td>
+                            <td>{{ facture.date_emission }}</td>
+                            <td>{{ facture.date_echeance }}</td>
+                            <td>{{ facture.montant_total }} €</td>
+                            <td>
+                                {% if facture.client %}
+                                    {{ facture.client.nom }}
+                                {% elif facture.fournisseur %}
+                                    {{ facture.fournisseur.nom }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="#" class="btn-primary">Envoyer Relance</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-success">
+                <p>Aucune facture en retard. Tout est à jour !</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Comptes</title>
+    <link rel="stylesheet" href="{% static 'APPLICATION/assets/css/style_liste_comptes.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Mes Comptes</h1>
+
+        <!-- Barre de recherche -->
+        <form method="get" action="{% url 'liste_comptes' %}">
+            <div class="form-group">
+                <input type="text" name="q" class="form-control" placeholder="Rechercher par nom...">
+                <button type="submit" class="btn-primary">Rechercher</button>
+            </div>
+        </form>
+
+        <!-- Affichage des messages -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Tableau des comptes -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Type</th>
+                    <th>Numéro</th>
+                    <th>Solde</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for compte in comptes %}
+                    <tr>
+                        <td>{{ compte.nom }}</td>
+                        <td>{{ compte.type }}</td>
+                        <td>{{ compte.numero }}</td>
+                        <td>{{ compte.solde }}</td>
+                        <td>
+                            <a href="{% url 'modifier_compte' compte.id %}" class="btn-primary">Modifier</a>
+                            <a href="{% url 'supprimer_compte' compte.id %}" class="btn-primary">Supprimer</a>
+                            <a href="{% url 'consulter_solde' compte.id %}" class="btn-primary">Consulter</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

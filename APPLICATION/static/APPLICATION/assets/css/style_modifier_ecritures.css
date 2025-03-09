@@ -1,0 +1,63 @@
+/* Styles pour la modification d'une écriture */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(1, 41, 112, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #012970;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #012970;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ebeef4;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #444444;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus, select:focus, textarea:focus {
+    border-color: #4154f1;
+    outline: none;
+    box-shadow: 0 0 5px rgba(65, 84, 241, 0.5);
+}
+
+.btn-primary {
+    background-color: #4154f1;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: #5969f3;
+}

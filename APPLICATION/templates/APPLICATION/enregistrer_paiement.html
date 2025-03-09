@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Enregistrer un Paiement</title>
+    <link rel="stylesheet" href="{% static 'APPLICATION/assets/css/style_enregistrer_paiement.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Enregistrer un Paiement</h1>
+        <p>Facture : {{ facture.numero }} - Montant : {{ facture.montant_total }} €</p>
+        <form method="post">
+            {% csrf_token %}
+            <label>Montant payé :</label>
+            <input type="number" name="montant_paye" step="0.01" class="form-control" required>
+            <button type="submit" class="btn-primary">Enregistrer</button>
+        </form>
+    </div>
+</body>
+</html>

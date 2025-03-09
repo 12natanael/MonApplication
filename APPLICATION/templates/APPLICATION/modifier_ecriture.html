@@ -1,0 +1,68 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier une Écriture</title>
+    <link rel="stylesheet" href="{% static 'APPLICATION/assets/css/style_modifier_ecritures.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Modifier une Écriture</h1>
+
+        <!-- Affichage des messages -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Formulaire de modification -->
+        <form method="post" action="{% url 'modifier_ecriture' ecriture.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="date">Date :</label>
+                <input type="date" id="date" name="date" value="{{ ecriture.date|date:'Y-m-d' }}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="montant">Montant :</label>
+                <input type="number" id="montant" name="montant" value="{{ ecriture.montant }}" step="0.01" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="commentaire">Commentaire :</label>
+                <textarea id="commentaire" name="commentaire" class="form-control">{{ ecriture.commentaire }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="justificatif">Justificatif :</label>
+                <input type="text" id="justificatif" name="justificatif" value="{{ ecriture.justificatif }}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="debit">Compte de Débit :</label>
+                <select id="debit" name="debit" class="form-control" required>
+                    {% for compte in comptes %}
+                        <option value="{{ compte.id }}" {% if compte.id == ecriture.debit.id %}selected{% endif %}>
+                            {{ compte.nom }} ({{ compte.numero }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="credit">Compte de Crédit :</label>
+                <select id="credit" name="credit" class="form-control" required>
+                    {% for compte in comptes %}
+                        <option value="{{ compte.id }}" {% if compte.id == ecriture.credit.id %}selected{% endif %}>
+                            {{ compte.nom }} ({{ compte.numero }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn-primary">Enregistrer</button>
+        </form>
+    </div>
+</body>
+</html>

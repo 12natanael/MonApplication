@@ -1,0 +1,104 @@
+/* Styles de base pour la liste des comptes */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(1, 41, 112, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #012970;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ebeef4;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #444444;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #4154f1;
+    outline: none;
+    box-shadow: 0 0 5px rgba(65, 84, 241, 0.5);
+}
+
+.btn-primary {
+    background-color: #4154f1;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: #5969f3;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #ebeef4;
+    text-align: left;
+    font-size: 14px;
+}
+
+.table th {
+    background-color: #f8f9fc;
+    color: #012970;
+    font-weight: 600;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tr:hover {
+    background-color: #eef2ff;
+}

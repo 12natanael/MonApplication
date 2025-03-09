@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur d'Envoi</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container alert alert-error">
+        <h1>Erreur</h1>
+        <p>Impossible d'envoyer la facture {{ facture.numero }}. Le client n'a pas d'adresse e-mail valide.</p>
+        <a href="{% url 'mes_factures' %}" class="btn-primary">Retour aux factures</a>
+    </div>
+</body>
+</html>

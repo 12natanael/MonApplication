@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier un Compte</title>
+    <link rel="stylesheet" href="{% static 'APPLICATION/assets/css/style_modifier_compte.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Modifier un Compte</h1>
+        <form method="post" action="{% url 'modifier_compte' compte.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nom">Nom du compte:</label>
+                <input type="text" id="nom" name="nom" value="{{ compte.nom }}" required>
+            </div>
+            <div class="form-group">
+                <label for="type">Type de compte:</label>
+                <select id="type" name="type" required>
+                    <option value="Actif" {% if compte.type == 'Actif' %}selected{% endif %}>Actif</option>
+                    <option value="Passif" {% if compte.type == 'Passif' %}selected{% endif %}>Passif</option>
+                    <option value="Capitaux propres" {% if compte.type == 'Capitaux propres' %}selected{% endif %}>Capitaux propres</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="numero">Numéro de compte:</label>
+                <input type="text" id="numero" name="numero" value="{{ compte.numero }}" required>
+            </div>
+            <div class="form-group">
+                <label for="solde">Solde initial:</label>
+                <input type="number" id="solde" name="solde" value="{{ compte.solde }}" step="0.01" required>
+            </div>
+            <button type="submit" class="btn-primary">Enregistrer</button>
+        </form>
+    </div>
+</body>
+</html>
